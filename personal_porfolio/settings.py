@@ -125,3 +125,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # This is added if we want to create a separate folder for images and videos over the base directory
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("Looks like no local file. You must be on the Production ")
