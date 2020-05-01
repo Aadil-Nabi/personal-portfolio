@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'portfolio/base.html' %}
+{% block content %}
+  <!-- Below line of code is for loading static files like images/pdf etc -->
+    <!-- {%  load static %} -->
+
+    <div class="container">
+      <a class="btn btn-warning" href="{% url 'blog:all_blogs' %}">Blog</a>
+      <a class="btn btn-info"href="{% static "portfolio/masarat-resume.pdf" %}">Resume</a>
+      <div class="jumbotron text-center">
+        <!-- Below is the static image in a project -->
+        <img src="{% static "portfolio/aadil.jpg" %}"> <br>
+
+
+        <!-- Below code is django templating language code not any python code -->
+        {% for project in projects   %}
+        {{project.title}}<br>
+        {{project.description}}<br>
+        <img src="{{project.image.url}}">
+
+        <!-- Below code says if we the url is defined in database then it will shown in website otherwise noty viisble -->
+        {%  if project.url %}<br>
+        <a class="btn btn-warning" href="{{project.url}}">Link</a>
+        {%  endif %}
+        <br>
+        {% endfor %}
+      </div>
+
+
+    </div>
+{% endblock %}

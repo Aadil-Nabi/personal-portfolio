@@ -1,0 +1,21 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+    <div class="container">
+      <!-- pluralize part helps us to get if we change blogs to blog if we have only one blog -->
+      <h2>Aadil has Written {{ blogs.count }} blog{{ blogs.count | pluralize}}</h2>
+      <div class="jumbotron">
+
+        {% for blog in blogs%}
+        <!-- Below line adds a link to the detail of the blog -->
+        <a href="{% url 'blog:detail' blog.id %}"><h1>{{blog.title}}</h1></a>
+        <!-- Date django template -->
+        <h3>{{blog.date|date:'M d Y'| upper}}</h3><br>
+        <!-- django template to truncate the text use truncatechars and striptags will help us to strip the tags input
+          but the tags will be there when we open in details -->
+        <p>{{blog.description |striptags| truncatechars:100}}</p><br>
+
+        {%  endfor %}
+
+      </div>
+    </div>
+{% endblock %}

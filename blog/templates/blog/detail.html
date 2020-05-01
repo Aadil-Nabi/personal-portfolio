@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+        <h1>{{ blog.title }}</h1> <br>
+        </div>
+        <div class="jumbotron">
+          <p></p>
+          <h4>{{blog.date|date:'F jS Y'}}</h4> <br>
+          </div>
+          <div class="jumbotron">
+            <p></p>
+            <!-- The safe keyword after | will hep us to add tags like bold <<b></b> pr <p></p> or any HTML in description -->
+            <p>{{blog.description|safe}}</p>
+            </div>
+
+    </div>
+{% endblock %}
